@@ -8,12 +8,12 @@ const val isDebugEnabled = true
 
 fun <T> logDebug(tag:String, value:T){
     if(!isDebugEnabled) return
-    Log.e("DEBUG=> $tag", value.toString())
+    Log.d("DEBUG=> $tag", value.toString())
 }
 
 fun <T> logInfo(tag:String, value:T){
     if(!isDebugEnabled) return
-    Log.e("INFO=> $tag", value.toString())
+    Log.i("INFO=> $tag", value.toString())
 }
 
 fun <T> logError(tag:String, value:T){
