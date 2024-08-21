@@ -43,18 +43,28 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 }
 
-publishing{
-    publications {
-        create<MavenPublication>("release") {
-            from(components["release"])
-            groupId = "com.github.Sahoo108"
-            artifactId = "android_native_lib_playground"
-            version = "v1.2"
-        }
+// afterEvaluate block to print components
+afterEvaluate {
+    components.forEach { component ->
+        println("Component: ${component.name}")
     }
-    repositories {
-        maven {
-            url = uri("https://jitpack.io")
+
+    publishing{
+        publications {
+            create<MavenPublication>("release") {
+                // Error handling if the release component is not found
+                val releaseComponent = components.findByName("release")
+                    ?: error("Release component not found. Available components: ${components.joinToString { it.name }}")
+                from(releaseComponent)
+                groupId = "com.github.Sahoo108"
+                artifactId = "android_native_lib_playground"
+                version = "v1.2"
+            }
+        }
+        repositories {
+            maven {
+                url = uri("https://jitpack.io")
+            }
         }
     }
 }
