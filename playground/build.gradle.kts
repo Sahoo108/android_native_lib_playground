@@ -58,7 +58,7 @@ afterEvaluate {
                 from(releaseComponent)
                 groupId = "com.github.Sahoo108"
                 artifactId = "android_native_lib_playground"
-                version = "v1.2"
+                version = "v1.3"
             }
         }
         repositories {
