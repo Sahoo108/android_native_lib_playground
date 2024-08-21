@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.sahoo.playground"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 24
@@ -31,6 +31,10 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_17.toString()
     }
+
+    buildFeatures {
+        buildConfig = true
+    }
 }
 
 dependencies {
@@ -45,10 +49,6 @@ dependencies {
 
 // afterEvaluate block to print components
 afterEvaluate {
-    components.forEach { component ->
-        println("Component: ${component.name}")
-    }
-
     publishing{
         publications {
             create<MavenPublication>("release") {
@@ -58,7 +58,7 @@ afterEvaluate {
                 from(releaseComponent)
                 groupId = "com.github.Sahoo108"
                 artifactId = "android_native_lib_playground"
-                version = "v1.3"
+                version = "v1.4"
             }
         }
         repositories {
