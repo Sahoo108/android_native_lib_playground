@@ -1,1 +1,1 @@
-This is a lib project playground to understand how android lib is developed
+This is a lib project playground for developing android libs
